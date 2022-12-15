@@ -1,0 +1,7 @@
+{
+    "mongoURI":"mongodb+srv://expert:1234@cluster0.l9b4o.mongodb.net/syedexpert",
+    "jwtSecret": "secret",
+    "MID": "juDHpm75643878631087",
+    "KEY": "GR5x7HQBjQg&%1Zp"
+}
+
