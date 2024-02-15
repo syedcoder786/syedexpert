@@ -3,9 +3,13 @@ const mongoose = require('mongoose')
 const config = require('config')
 const db = config.get('mongoURI');
 const path = require('path')
-// const checksum = require('./paytm/checksum/checksum')
 
 const app = express();
+// const checksum = require('./paytm/checksum/checksum')
+const cors = require("cors");
+app.use(cors());
+
+
 
 //bodyParser middleware
 app.use(express.json());

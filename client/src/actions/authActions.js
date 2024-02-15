@@ -10,6 +10,8 @@ import {
 } from './types';
 import {returnErrors} from './errorActions'
 import axios from 'axios';
+import { urlProxy } from '../config/default';
+
 
 export const loadUser = () => (dispatch, getState) => {
     //user loading
@@ -28,12 +30,13 @@ export const loadUser = () => (dispatch, getState) => {
         config.headers['x-auth-token'] = token;
     }
 
-    axios.get('/api/auth/user', config)
+    axios.get(urlProxy + '/api/auth/user', config)
         .then( res => dispatch({
             type:USER_LOADED,
             payload:res.data
         }))
         .catch( err => {
+            // console.log(err)
             dispatch(returnErrors(err.response.data, err.response.status))
             dispatch({
             type:AUTH_ERROR
@@ -45,7 +48,7 @@ export const loadUser = () => (dispatch, getState) => {
 export const register = (user) => (dispatch) => {
     axios({
         method: 'post',
-        url: '/api/register',
+        url: urlProxy + '/api/register',
         data: user
       }).then(user =>dispatch({
         type:REGESTER_SUCCESS,
@@ -71,7 +74,7 @@ export const logout = () => {
 export const login = (user) => (dispatch) => {
     axios({
         method:'post',
-        url:'/api/auth',
+        url:urlProxy + '/api/auth',
         data: user
     }).then(user => {
         dispatch({
@@ -92,7 +95,7 @@ export const login = (user) => (dispatch) => {
 export const loginfacebook = (fbuser) => (dispatch) => {
     axios({
         method:'post',
-        url:'/api/fblogin',
+        url:urlProxy + '/api/fblogin',
         data: fbuser
     }).then(user => {
         dispatch({

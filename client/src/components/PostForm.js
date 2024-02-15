@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { urlProxy } from '../config/default';
+
 // import {connect} from 'react-redux';
 // import {AddPost} from '../actions/postActions';
 class PostForm extends Component {
@@ -21,7 +23,7 @@ class PostForm extends Component {
     e.preventDefault();
     axios({
         method: 'post',
-        url: '/api/addaccount',
+        url: urlProxy + '/api/addaccount',
         data: this.state,
         }).then(item =>
             console.log(item.data)

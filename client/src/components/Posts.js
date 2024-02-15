@@ -17,10 +17,11 @@ class Posts extends Component {
 componentDidMount() {
 
   this.props.fetchPosts()
-  setInterval(
-    () => this.props.fetchPosts(),
-    2000
-  );
+  // setInterval(
+    // () => 
+    // this.props.fetchPosts(),
+    // 2000
+  // );
   const script = document.createElement("script");
       script.src = "https://www.paypal.com/sdk/js?client-id=AbQycP9xKQ37N-HbUvTr80YCeCbKRWSyga-aDXoLAj-c-e4I2Nii-0aJVgVVZ1DOhhXiFOH_6-KWop1A";
       // script.addEventListener("load", () => setLoaded(true))

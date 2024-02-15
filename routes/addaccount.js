@@ -21,6 +21,9 @@ router.post('/',  (req,res) => {
     newDetail.save()
         .then(account => {
             res.json(account)
+        }).catch(err=>{
+            console.log(err)
+            res.status(400).json(err)
         })
 
 })

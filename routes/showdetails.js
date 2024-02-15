@@ -1,17 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Detail = require('../models/Details');
+const Detail = require("../models/Details");
 
-
-router.get('/', (req,res) => {
-    Detail.find()
-        .then(details=>{
-            res.json(details)
-        })
-        // .then(showpost=>{
-        //     return JSON.stringify(showpost);
-        // })
-
-})
+router.get("/", (req, res) => {
+  // console.log("test")
+  Detail.find()
+    .then((details) => {
+      // console.log(details)
+      res.json(details);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
 
 module.exports = router;

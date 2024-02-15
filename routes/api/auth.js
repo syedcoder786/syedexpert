@@ -42,6 +42,8 @@ router.post('/', (req,res) => {
                     )
                 })
             
+        }).catch(err=>{
+            res.status(400).json(err)
         })
 
 })
@@ -58,6 +60,8 @@ router.get('/user', auth, (req,res)=>{
                 res.json(fbuser)
             })
         }
+    }).catch(err=>{
+        res.status(400).json(err)
     })
 })
 

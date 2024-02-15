@@ -1,17 +1,19 @@
 import { FETCH_POSTS, GET_POST, ERROR_POST, POST_LOADING, POST_LOADED } from './types';
 import axios from 'axios';
-var y,x=0;
+import { urlProxy } from '../config/default';
+
+// var y,x=0;
 
 export const fetchPosts=()=>dispatch=>{
-  if(x === 0){
+  // if(x === 0){
     dispatch({type:POST_LOADING})
-  }
-    axios.get('/api/showdetails')
-    // .then(res => res.json())
-      .then(details =>{
-        if (x===0){
-              console.log(x)
-              axios.get('/api/showpost')
+  // }
+    // axios.get(urlProxy + '/api/showdetails')
+    // // .then(res => res.json())
+    //   .then(details =>{
+        // if (x===0){
+              // console.log(x)
+              axios.get(urlProxy + '/api/showpost')
                 .then(posts => {
                   dispatch({type:POST_LOADED})
                   dispatch({
@@ -19,27 +21,31 @@ export const fetchPosts=()=>dispatch=>{
                     payload: posts.data
                   })
                   console.log(posts.data)
+                }).catch(err => {
+                  console.log(err)
                 })
-              x=1;
-              y=details.data.length;
-              console.log('first')
-              console.log(y)
-        }
-        else if (y!==details.data.length){
-                  console.log(y)
-                  axios.get('/api/showpost')
-                    .then(posts => {
-                      // dispatch({type:POST_LOADED})
-                      dispatch({
-                        type: FETCH_POSTS,
-                        payload: posts.data
-                      })
-                  })
-                  y=details.data.length;
-                  console.log('secound')
-        }
+              // x=1;
+              // y=details.data.length;
+              // console.log('first')
+              // console.log(y)
+        // }
 
-      })
+
+        // else if (y!==details.data.length){
+        //           console.log(y)
+        //           axios.get(urlProxy + '/api/showpost')
+        //             .then(posts => {
+        //               // dispatch({type:POST_LOADED})
+        //               dispatch({
+        //                 type: FETCH_POSTS,
+        //                 payload: posts.data
+        //               })
+        //           })
+        //           y=details.data.length;
+        //           console.log('secound')
+        // }
+
+      // })
       
       
   };
@@ -83,7 +89,7 @@ export const findPost=(id)=>(dispatch,getState) => {
   //   data:id,
   //   headers:config
   // })
-  axios.post('/api/findpost',id,config)
+  axios.post(urlProxy + '/api/findpost',id,config)
   .then(post =>{
       console.log('myposts'+JSON.stringify(post.data))
             dispatch({
